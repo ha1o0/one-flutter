@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'FunctionPage.dart';
 
 void main() => runApp(new MyApp());
 
@@ -16,75 +17,6 @@ class MyApp extends StatelessWidget {
         '/': (BuildContext context) => new FunctionPage(),
         '/first': (BuildContext context) => new RandomWords(),
       },
-    );
-  }
-}
-
-class FunctionPage extends StatefulWidget {
-  const FunctionPage({ Key? key }): super(key: key);
-
-  @override
-  State<StatefulWidget> createState() {
-    return new FunctionState();
-  }
-}
-
-class FunctionState extends State<FunctionPage> {
-
-  int _selectIndex = 0;
-  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static List<Widget> _widgetOptions = <Widget>[
-    RandomWords(),
-    RandomWords(),
-  ];
-  var tabImages;
-
-  Image getTabImage(path) {
-    return new Image.asset(path, width: 24.0, height: 24.0);
-  }
-
-  Image getTabIcon(int curIndex) {
-    if (curIndex == _selectIndex) {
-      return tabImages[curIndex][1];
-    }
-    return tabImages[curIndex][0];
-  }
-
-  void initData() {
-    tabImages = [
-      [getTabImage('images/world.png'), getTabImage('images/world-selected.png')],
-      [getTabImage('images/user.png'), getTabImage('images/user-selected.png')],
-    ];
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    initData();
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('bbbbb'),
-      ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectIndex),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.lightBlue,
-        shape: CircularNotchedRectangle(),
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          items: [
-            BottomNavigationBarItem(icon: getTabIcon(0), label: '世界'),
-            BottomNavigationBarItem(icon: getTabIcon(1), label: '我的'),
-          ],
-          currentIndex: _selectIndex,
-          iconSize: 24.0,
-          onTap: (index) {
-            setState(() {
-              _selectIndex = index;
-            });
-          },
-        ),
-      ),
     );
   }
 }
@@ -133,9 +65,6 @@ class RandomWordsState extends State<RandomWords> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('aaaaaa'),
-      ),
       body: _buildSuggestions(),
     );
   }
