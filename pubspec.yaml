@@ -36,14 +36,14 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
-assets:
-  - images/world.png
-  - images/world-selected.png
-  - images/user.png
-  - images/user-selected.png
-
 # The following section is specific to Flutter.
 flutter:
+
+  assets:
+    - images/world.png
+    - images/world-selected.png
+    - images/user.png
+    - images/user-selected.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
